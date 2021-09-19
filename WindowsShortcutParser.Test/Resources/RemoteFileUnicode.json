@@ -1,0 +1,111 @@
+{
+  "ShellLinkHeader": {
+    "HeaderSize": 76,
+    "LinkCLSID": "00021401-0000-0000-c000-000000000046",
+    "LinkFlags": {
+      "HasLinkTargetIDList": false,
+      "HasLinkInfo": true,
+      "HasName": false,
+      "HasRelativePath": true,
+      "HasWorkingDir": true,
+      "HasArguments": false,
+      "HasIconLocation": false,
+      "IsUnicode": true,
+      "ForceNoLinkInfo": false,
+      "HasExpString": true,
+      "RunInSeparateProcess": false,
+      "Unused1": false,
+      "HasDarwinID": false,
+      "RunAsUser": false,
+      "HasExpIcon": false,
+      "NoPidlAlias": false,
+      "Unused2": false,
+      "RunWithShimLayer": false,
+      "ForceNoLinkTrack": false,
+      "EnableTargetMetadata": true,
+      "DisableLinkPathTracking": false,
+      "DisableKnownFolderTracking": false,
+      "DisableKnownFolderAlias": false,
+      "AllowLinkToLink": false,
+      "UnaliasOnSave": false,
+      "PreferEnvironmentPath": false,
+      "KeepLocalIDListForUNCTarget": false
+    },
+    "FileAttributes": {
+      "FILE_ATTRIBUTE_READONLY": false,
+      "FILE_ATTRIBUTE_HIDDEN": false,
+      "FILE_ATTRIBUTE_SYSTEM": false,
+      "Reserved1": false,
+      "FILE_ATTRIBUTE_DIRECTORY": false,
+      "FILE_ATTRIBUTE_ARCHIVE": true,
+      "Reserved2": false,
+      "FILE_ATTRIBUTE_NORMAL": false,
+      "FILE_ATTRIBUTE_TEMPORARY": false,
+      "FILE_ATTRIBUTE_SPARSE_FILE": false,
+      "FILE_ATTRIBUTE_REPARSE_POINT": false,
+      "FILE_ATTRIBUTE_COMPRESSED": false,
+      "FILE_ATTRIBUTE_OFFLINE": false,
+      "FILE_ATTRIBUTE_NOT_CONTENT_INDEXED": false,
+      "FILE_ATTRIBUTE_ENCRYPTED": false
+    },
+    "CreationTime": "2021-09-18T11:17:21.1979489+09:00",
+    "AccessTime": "2021-09-18T11:32:01.1609195+09:00",
+    "WriteTime": "2021-09-18T11:19:34.975955+09:00",
+    "FileSize": 1491,
+    "IconIndex": 0,
+    "ShowCommand": 1,
+    "HotKey": {
+      "LowByte": 0,
+      "HighByte": 0
+    },
+    "Reserved1": "AAA=",
+    "Reserved2": "AAAAAA==",
+    "Reserved3": "AAAAAA=="
+  },
+  "LinkTargetIDList": {
+    "IDListSize": 0,
+    "IDList": []
+  },
+  "LinkInfo": {
+    "LinkInfoSize": 118,
+    "LinkInfoHeaderSize": 36,
+    "LinkInfoFlags": {
+      "VolumeIDAndLocalBasePath": false,
+      "CommonNetworkRelativeLinkAndPathSuffix": true
+    },
+    "VolumeIDOffset": 0,
+    "LocalBasePathOffset": 0,
+    "CommonNetworkRelativeLinkOffset": 36,
+    "CommonPathSuffixOffset": 79,
+    "LocalBasePathOffsetUnicode": 0,
+    "CommonPathSuffixOffsetUnicode": 92,
+    "VolumeID": null,
+    "LocalBasePath": null,
+    "CommonNetworkRelativeLink": {
+      "CommonNetworkRelativeLinkSize": 43,
+      "CommonNetworkRelativeLinkFlags": {
+        "ValidDevice": false,
+        "ValidNetType": true
+      },
+      "NetNameOffset": 20,
+      "DeviceNameOffset": 0,
+      "NetworkProviderType": 0,
+      "NetNameOffsetUnicode": 0,
+      "DeviceNameOffsetUnicode": 0,
+      "NetName": "\\\\192.168.10.101\\SHARE",
+      "DeviceName": "temp\\?\\?.txt",
+      "NetNameUnicode": null,
+      "DeviceNameUnicode": null
+    },
+    "CommonPathSuffix": "temp\\?\\?.txt",
+    "LocalBasePathUnicode": null,
+    "CommonPathSuffixUnicode": "temp\\\u263A\\\u263A.txt"
+  },
+  "StringData": {
+    "NAME_STRING": null,
+    "RELATIVE_PATH": ".\\\u263A.txt",
+    "WORKING_DIR": "\\\\192.168.10.101\\Share\\temp\\\u263A",
+    "COMMAND_LINE_ARGUMENTS": null,
+    "ICON_LOCATION": null
+  }
+}

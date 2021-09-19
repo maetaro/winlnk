@@ -1,0 +1,111 @@
+{
+  "ShellLinkHeader": {
+    "HeaderSize": 76,
+    "LinkCLSID": "00021401-0000-0000-c000-000000000046",
+    "LinkFlags": {
+      "HasLinkTargetIDList": false,
+      "HasLinkInfo": true,
+      "HasName": false,
+      "HasRelativePath": true,
+      "HasWorkingDir": false,
+      "HasArguments": false,
+      "HasIconLocation": false,
+      "IsUnicode": true,
+      "ForceNoLinkInfo": false,
+      "HasExpString": true,
+      "RunInSeparateProcess": false,
+      "Unused1": false,
+      "HasDarwinID": false,
+      "RunAsUser": false,
+      "HasExpIcon": false,
+      "NoPidlAlias": false,
+      "Unused2": false,
+      "RunWithShimLayer": false,
+      "ForceNoLinkTrack": false,
+      "EnableTargetMetadata": true,
+      "DisableLinkPathTracking": false,
+      "DisableKnownFolderTracking": false,
+      "DisableKnownFolderAlias": false,
+      "AllowLinkToLink": false,
+      "UnaliasOnSave": false,
+      "PreferEnvironmentPath": false,
+      "KeepLocalIDListForUNCTarget": false
+    },
+    "FileAttributes": {
+      "FILE_ATTRIBUTE_READONLY": false,
+      "FILE_ATTRIBUTE_HIDDEN": false,
+      "FILE_ATTRIBUTE_SYSTEM": false,
+      "Reserved1": false,
+      "FILE_ATTRIBUTE_DIRECTORY": true,
+      "FILE_ATTRIBUTE_ARCHIVE": false,
+      "Reserved2": false,
+      "FILE_ATTRIBUTE_NORMAL": false,
+      "FILE_ATTRIBUTE_TEMPORARY": false,
+      "FILE_ATTRIBUTE_SPARSE_FILE": false,
+      "FILE_ATTRIBUTE_REPARSE_POINT": false,
+      "FILE_ATTRIBUTE_COMPRESSED": false,
+      "FILE_ATTRIBUTE_OFFLINE": false,
+      "FILE_ATTRIBUTE_NOT_CONTENT_INDEXED": false,
+      "FILE_ATTRIBUTE_ENCRYPTED": false
+    },
+    "CreationTime": "2021-08-28T16:34:45.5071751+09:00",
+    "AccessTime": "2021-09-18T11:34:23.7394792+09:00",
+    "WriteTime": "2021-08-28T16:35:18.8513364+09:00",
+    "FileSize": 0,
+    "IconIndex": 0,
+    "ShowCommand": 1,
+    "HotKey": {
+      "LowByte": 0,
+      "HighByte": 0
+    },
+    "Reserved1": "AAA=",
+    "Reserved2": "AAAAAA==",
+    "Reserved3": "AAAAAA=="
+  },
+  "LinkTargetIDList": {
+    "IDListSize": 0,
+    "IDList": []
+  },
+  "LinkInfo": {
+    "LinkInfoSize": 84,
+    "LinkInfoHeaderSize": 28,
+    "LinkInfoFlags": {
+      "VolumeIDAndLocalBasePath": false,
+      "CommonNetworkRelativeLinkAndPathSuffix": true
+    },
+    "VolumeIDOffset": 0,
+    "LocalBasePathOffset": 0,
+    "CommonNetworkRelativeLinkOffset": 28,
+    "CommonPathSuffixOffset": 71,
+    "LocalBasePathOffsetUnicode": 0,
+    "CommonPathSuffixOffsetUnicode": 0,
+    "VolumeID": null,
+    "LocalBasePath": null,
+    "CommonNetworkRelativeLink": {
+      "CommonNetworkRelativeLinkSize": 43,
+      "CommonNetworkRelativeLinkFlags": {
+        "ValidDevice": false,
+        "ValidNetType": true
+      },
+      "NetNameOffset": 20,
+      "DeviceNameOffset": 0,
+      "NetworkProviderType": 0,
+      "NetNameOffsetUnicode": 0,
+      "DeviceNameOffsetUnicode": 0,
+      "NetName": "\\\\192.168.10.101\\SHARE",
+      "DeviceName": "\u30DD\u30B9\u30BF\u30FC\u4F5C\u308A",
+      "NetNameUnicode": null,
+      "DeviceNameUnicode": null
+    },
+    "CommonPathSuffix": "\u30DD\u30B9\u30BF\u30FC\u4F5C\u308A",
+    "LocalBasePathUnicode": null,
+    "CommonPathSuffixUnicode": null
+  },
+  "StringData": {
+    "NAME_STRING": null,
+    "RELATIVE_PATH": ".\\\u30DD\u30B9\u30BF\u30FC\u4F5C\u308A",
+    "WORKING_DIR": null,
+    "COMMAND_LINE_ARGUMENTS": null,
+    "ICON_LOCATION": null
+  }
+}

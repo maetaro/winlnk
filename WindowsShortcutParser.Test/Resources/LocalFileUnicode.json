@@ -1,0 +1,124 @@
+{
+  "ShellLinkHeader": {
+    "HeaderSize": 76,
+    "LinkCLSID": "00021401-0000-0000-c000-000000000046",
+    "LinkFlags": {
+      "HasLinkTargetIDList": true,
+      "HasLinkInfo": true,
+      "HasName": false,
+      "HasRelativePath": true,
+      "HasWorkingDir": true,
+      "HasArguments": false,
+      "HasIconLocation": false,
+      "IsUnicode": true,
+      "ForceNoLinkInfo": false,
+      "HasExpString": false,
+      "RunInSeparateProcess": false,
+      "Unused1": false,
+      "HasDarwinID": false,
+      "RunAsUser": false,
+      "HasExpIcon": false,
+      "NoPidlAlias": false,
+      "Unused2": false,
+      "RunWithShimLayer": false,
+      "ForceNoLinkTrack": false,
+      "EnableTargetMetadata": true,
+      "DisableLinkPathTracking": false,
+      "DisableKnownFolderTracking": false,
+      "DisableKnownFolderAlias": false,
+      "AllowLinkToLink": false,
+      "UnaliasOnSave": false,
+      "PreferEnvironmentPath": false,
+      "KeepLocalIDListForUNCTarget": false
+    },
+    "FileAttributes": {
+      "FILE_ATTRIBUTE_READONLY": false,
+      "FILE_ATTRIBUTE_HIDDEN": false,
+      "FILE_ATTRIBUTE_SYSTEM": false,
+      "Reserved1": false,
+      "FILE_ATTRIBUTE_DIRECTORY": false,
+      "FILE_ATTRIBUTE_ARCHIVE": true,
+      "Reserved2": false,
+      "FILE_ATTRIBUTE_NORMAL": false,
+      "FILE_ATTRIBUTE_TEMPORARY": false,
+      "FILE_ATTRIBUTE_SPARSE_FILE": false,
+      "FILE_ATTRIBUTE_REPARSE_POINT": false,
+      "FILE_ATTRIBUTE_COMPRESSED": false,
+      "FILE_ATTRIBUTE_OFFLINE": false,
+      "FILE_ATTRIBUTE_NOT_CONTENT_INDEXED": false,
+      "FILE_ATTRIBUTE_ENCRYPTED": false
+    },
+    "CreationTime": "2021-09-18T11:17:21.1979489+09:00",
+    "AccessTime": "2021-09-18T11:19:34.9779495+09:00",
+    "WriteTime": "2021-09-18T11:19:34.975955+09:00",
+    "FileSize": 1491,
+    "IconIndex": 0,
+    "ShowCommand": 1,
+    "HotKey": {
+      "LowByte": 0,
+      "HighByte": 0
+    },
+    "Reserved1": "AAA=",
+    "Reserved2": "AAAAAA==",
+    "Reserved3": "AAAAAA=="
+  },
+  "LinkTargetIDList": {
+    "IDListSize": 285,
+    "IDList": [
+      {
+        "ItemIDSize": 20,
+        "Data": "H1DgT9Ag6jppEKLYCAArMDCd"
+      },
+      {
+        "ItemIDSize": 25,
+        "Data": "L0M6XAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      },
+      {
+        "ItemIDSize": 78,
+        "Data": "MQAAAAAAMlMXEhAAdGVtcAAAOgAJAAQA774yUxcSMlMXEi4AAABVdw0AAAAHAAAAAAAAAAAAAAAAAAAAx/oTAHQAZQBtAHAAAAAUAA=="
+      },
+      {
+        "ItemIDSize": 74,
+        "Data": "MQAAAAAAMlM9EhAARTlDN34xAAA0AAkABADvvjJTORIyUz0SLgAAAGJ3DQAAAAsAAAAAAAAAAAAAAAAAAABQ+IYAOiYAABYA"
+      },
+      {
+        "ItemIDSize": 86,
+        "Data": "MgDTBQAAMlNyEiAAOTI2RH4xLlRYVAAAPAAJAAQA774yUysSMlNyEi4AAABXdw0AAAALAAAAAAAAAAAAAAAAAAAAwkGcADomLgB0AHgAdAAAABoA"
+      }
+    ]
+  },
+  "LinkInfo": {
+    "LinkInfoSize": 112,
+    "LinkInfoHeaderSize": 36,
+    "LinkInfoFlags": {
+      "VolumeIDAndLocalBasePath": true,
+      "CommonNetworkRelativeLinkAndPathSuffix": false
+    },
+    "VolumeIDOffset": 36,
+    "LocalBasePathOffset": 60,
+    "CommonNetworkRelativeLinkOffset": 0,
+    "CommonPathSuffixOffset": 108,
+    "LocalBasePathOffsetUnicode": 76,
+    "CommonPathSuffixOffsetUnicode": 110,
+    "VolumeID": {
+      "VolumeIDSize": 24,
+      "DriveType": 3,
+      "DriveSerialNumber": 2931710625,
+      "VolumeLabelOffset": 16,
+      "VolumeLabelOffsetUnicode": 0,
+      "Data": "Windows"
+    },
+    "LocalBasePath": "C:\\temp\\?\\?.txt",
+    "CommonNetworkRelativeLink": null,
+    "CommonPathSuffix": "",
+    "LocalBasePathUnicode": "C:\\temp\\\u263A\\\u263A.txt",
+    "CommonPathSuffixUnicode": ""
+  },
+  "StringData": {
+    "NAME_STRING": null,
+    "RELATIVE_PATH": "..\\..\\..\\temp\\\u263A\\\u263A.txt",
+    "WORKING_DIR": "C:\\temp\\\u263A",
+    "COMMAND_LINE_ARGUMENTS": null,
+    "ICON_LOCATION": null
+  }
+}
