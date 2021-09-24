@@ -24,16 +24,23 @@ namespace WindowsShortcutParser.Entity
                 return buff[1];
             }
         }
-        private CommonNetworkRelativeLinkFlags() : this(new byte[4])
+        public CommonNetworkRelativeLinkFlags() : this(new byte[4])
         {
         }
-        private CommonNetworkRelativeLinkFlags(byte[] bytes)
+        public CommonNetworkRelativeLinkFlags(byte[] bytes)
         {
             buff = new BitArray(bytes);
         }
         public static CommonNetworkRelativeLinkFlags FromBinary(byte[] bytes)
         {
             return new CommonNetworkRelativeLinkFlags(bytes);
+        }
+
+        public byte[] ToByteArray()
+        {
+            byte[] ret = new byte[(buff.Length - 1) / 8 + 1];
+            buff.CopyTo(ret, 0);
+            return ret;
         }
     }
 }

@@ -38,10 +38,10 @@ namespace WindowsShortcutParser.Entity
         public bool PreferEnvironmentPath { get { return buff[25]; } set { buff[25] = value; } }
         public bool KeepLocalIDListForUNCTarget { get { return buff[26]; } set { buff[26] = value; } }
 
-        private LinkFlags() : this(new byte[4])
+        public LinkFlags() : this(new byte[4])
         {
         }
-        private LinkFlags(byte[] bytes)
+        public LinkFlags(byte[] bytes)
         {
             buff = new BitArray(bytes);
         }
@@ -49,5 +49,12 @@ namespace WindowsShortcutParser.Entity
         {
             return new LinkFlags(bytes);
         }
+        public byte[] ToByteArray()
+        {
+            byte[] ret = new byte[(buff.Length - 1) / 8 + 1];
+            buff.CopyTo(ret, 0);
+            return ret;
+        }
+
     }
 }

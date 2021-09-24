@@ -25,16 +25,22 @@ namespace WindowsShortcutParser.Entity
         public bool FILE_ATTRIBUTE_OFFLINE { get { return buff[12]; } set { buff[12] = value; } }
         public bool FILE_ATTRIBUTE_NOT_CONTENT_INDEXED { get { return buff[13]; } set { buff[13] = value; } }
         public bool FILE_ATTRIBUTE_ENCRYPTED { get { return buff[14]; } set { buff[14] = value; } }
-        private FileAttributes() : this(new byte[4])
+        public FileAttributes() : this(new byte[4])
         {
         }
-        private FileAttributes(byte[] bytes)
+        public FileAttributes(byte[] bytes)
         {
             buff = new BitArray(bytes);
         }
         public static FileAttributes FromBinary(byte[] bytes)
         {
             return new FileAttributes(bytes);
+        }
+        public byte[] ToByteArray()
+        {
+            byte[] ret = new byte[(buff.Length - 1) / 8 + 1];
+            buff.CopyTo(ret, 0);
+            return ret;
         }
     }
 }

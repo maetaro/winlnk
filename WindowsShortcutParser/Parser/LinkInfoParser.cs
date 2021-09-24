@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,47 @@ namespace WindowsShortcutParser.Parser
             }
 
             return entity;
+        }
+
+        public static void Serialize(Stream stream, LinkInfo entity)
+        {
+            stream.Write(BitConverter.GetBytes(entity.LinkInfoSize), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.LinkInfoHeaderSize), 0, 4);
+            stream.Write(entity.LinkInfoFlags.ToByteArray(), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.VolumeIDOffset), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.LocalBasePathOffset), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.CommonNetworkRelativeLinkOffset), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.CommonPathSuffixOffset), 0, 4);
+            if (entity.LinkInfoHeaderSize >= 0x24)
+            {
+                stream.Write(BitConverter.GetBytes(entity.LocalBasePathOffsetUnicode), 0, 4);
+                stream.Write(BitConverter.GetBytes(entity.CommonPathSuffixOffsetUnicode), 0, 4);
+            }
+            if (entity.LinkInfoFlags.VolumeIDAndLocalBasePath)
+            {
+                VolumeIDParser.Serialize(stream, entity.VolumeID);
+                var buff = System.Text.Encoding.Default.GetBytes(entity.LocalBasePath);
+                stream.Write(buff, 0, buff.Length);
+            }
+            if (entity.LinkInfoFlags.CommonNetworkRelativeLinkAndPathSuffix)
+            {
+                CommonNetworkRelativeLinkParser.Serialize(stream, entity.CommonNetworkRelativeLink);
+            }
+            //if (entity.CommonPathSuffixOffset > 0)
+            //{
+            //    reader.Seek(linkInfoFirstPosition + entity.CommonPathSuffixOffset);
+            //    entity.CommonPathSuffix = reader.ReadNullTerminatedString();
+            //}
+            //if (entity.LinkInfoFlags.VolumeIDAndLocalBasePath && entity.LinkInfoHeaderSize >= 0x00000024)
+            //{
+            //    reader.Seek(linkInfoFirstPosition + entity.LocalBasePathOffsetUnicode);
+            //    entity.LocalBasePathUnicode = reader.ReadNullTerminatedUnicodeString();
+            //}
+            //if (entity.LinkInfoHeaderSize >= 0x00000024)
+            //{
+            //    reader.Seek(linkInfoFirstPosition + entity.CommonPathSuffixOffsetUnicode);
+            //    entity.CommonPathSuffixUnicode = reader.ReadNullTerminatedUnicodeString();
+            //}
         }
     }
 }

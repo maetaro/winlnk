@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,17 @@ namespace WindowsShortcutParser.Parser
                 throw new BadImageFormatException($"TerminalID is {TerminalID}, at {reader.BaseStream.Position}.");
             }
             return entity;
+        }
+
+        public static void Serialize(Stream stream, WindowsShellLinkEntity entity)
+        {
+            stream.Write(BitConverter.GetBytes(entity.LinkTargetIDList.IDListSize), 0, 2);
+            foreach (var item in entity.LinkTargetIDList.IDList)
+            {
+                stream.Write(BitConverter.GetBytes(item.ItemIDSize), 0, 2);
+                stream.Write(item.Data, 0, item.Data.Length);
+            }
+            stream.Write(new byte[] { 0x00, 0x00 }, 0, 2);
         }
     }
 }

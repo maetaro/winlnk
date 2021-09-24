@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using WindowsShortcutParser.Entity;
 using WindowsShortcutParser.Utility;
 
@@ -13,11 +14,11 @@ namespace WindowsShortcutParser.Parser
             entity.CommonNetworkRelativeLinkFlags = CommonNetworkRelativeLinkFlags.FromBinary(reader.ReadBytes(4));
             entity.NetNameOffset = reader.ReadUInt32();
             entity.DeviceNameOffset = reader.ReadUInt32();
-            var npt = (NetworkProviderType)Enum.ToObject(typeof(NetworkProviderType), (int)reader.ReadUInt32());
-            if (Enum.IsDefined(typeof(NetworkProviderType), npt))
-            {
-                entity.NetworkProviderType = npt;
-            }
+            entity.NetworkProviderType = new NetworkProviderType(reader.ReadUInt32());
+            //if (entity.CommonNetworkRelativeLinkFlags.ValidNetType)
+            //{
+            //    entity.NetworkProviderType = npt;
+            //}
             if (entity.NetNameOffset > 0x00000014)
             {
                 entity.NetNameOffsetUnicode = reader.ReadUInt32();
@@ -31,6 +32,14 @@ namespace WindowsShortcutParser.Parser
                 entity.DeviceNameUnicode = reader.ReadNullTerminatedUnicodeString();
             }
             return entity;
+        }
+
+        public static void Serialize(Stream stream, CommonNetworkRelativeLink entity)
+        {
+            stream.Write(BitConverter.GetBytes(entity.CommonNetworkRelativeLinkSize), 0, 4);
+            stream.Write(entity.CommonNetworkRelativeLinkFlags.ToByteArray(), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.NetNameOffset), 0, 4);
+            stream.Write(BitConverter.GetBytes(entity.DeviceNameOffset), 0, 4);
         }
     }
 }

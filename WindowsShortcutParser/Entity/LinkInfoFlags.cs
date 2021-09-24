@@ -16,6 +16,10 @@ namespace WindowsShortcutParser.Entity
             {
                 return buff[0];
             }
+            set
+            {
+                buff[0] = value;
+            }
         }
         public bool CommonNetworkRelativeLinkAndPathSuffix
         {
@@ -23,17 +27,28 @@ namespace WindowsShortcutParser.Entity
             {
                 return buff[1];
             }
+            set
+            {
+                buff[1] = value;
+            }
         }
-        private LinkInfoFlags() : this(new byte[4])
+        public LinkInfoFlags() : this(new byte[4])
         {
         }
-        private LinkInfoFlags(byte[] bytes)
+        public LinkInfoFlags(byte[] bytes)
         {
             buff = new BitArray(bytes);
         }
         public static LinkInfoFlags FromBinary(byte[] bytes)
         {
             return new LinkInfoFlags(bytes);
+        }
+
+        public byte[] ToByteArray()
+        {
+            byte[] ret = new byte[(buff.Length - 1) / 8 + 1];
+            buff.CopyTo(ret, 0);
+            return ret;
         }
     }
 }
