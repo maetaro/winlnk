@@ -62,10 +62,7 @@
     "Reserved2": "AAAAAA==",
     "Reserved3": "AAAAAA=="
   },
-  "LinkTargetIDList": {
-    "IDListSize": 0,
-    "IDList": []
-  },
+  "LinkTargetIDList": null,
   "LinkInfo": {
     "LinkInfoSize": 84,
     "LinkInfoHeaderSize": 28,
@@ -89,7 +86,9 @@
       },
       "NetNameOffset": 20,
       "DeviceNameOffset": 0,
-      "NetworkProviderType": 0,
+      "NetworkProviderType": {
+        "Value": 131072
+      },
       "NetNameOffsetUnicode": 0,
       "DeviceNameOffsetUnicode": 0,
       "NetName": "\\\\192.168.10.101\\SHARE",
