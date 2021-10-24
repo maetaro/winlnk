@@ -45,6 +45,39 @@ namespace WindowsShortcutParser.Entity
         {
             buff = new BitArray(bytes);
         }
+        public override bool Equals(object obj)
+        {
+            LinkFlags other = (LinkFlags)obj;
+            if (this.HasLinkTargetIDList != other.HasLinkTargetIDList) return false;
+            if (this.HasLinkInfo != other.HasLinkInfo) return false;
+            if (this.HasName != other.HasName) return false;
+            if (this.HasRelativePath != other.HasRelativePath) return false;
+            if (this.HasWorkingDir != other.HasWorkingDir) return false;
+            if (this.HasArguments != other.HasArguments) return false;
+            if (this.HasIconLocation != other.HasIconLocation) return false;
+            if (this.IsUnicode != other.IsUnicode) return false;
+            if (this.ForceNoLinkInfo != other.ForceNoLinkInfo) return false;
+            if (this.HasExpString != other.HasExpString) return false;
+            if (this.RunInSeparateProcess != other.RunInSeparateProcess) return false;
+            if (this.Unused1 != other.Unused1) return false;
+            if (this.HasDarwinID != other.HasDarwinID) return false;
+            if (this.RunAsUser != other.RunAsUser) return false;
+            if (this.HasExpIcon != other.HasExpIcon) return false;
+            if (this.NoPidlAlias != other.NoPidlAlias) return false;
+            if (this.Unused2 != other.Unused2) return false;
+            if (this.RunWithShimLayer != other.RunWithShimLayer) return false;
+            if (this.ForceNoLinkTrack != other.ForceNoLinkTrack) return false;
+            if (this.EnableTargetMetadata != other.EnableTargetMetadata) return false;
+            if (this.DisableLinkPathTracking != other.DisableLinkPathTracking) return false;
+            if (this.DisableKnownFolderTracking != other.DisableKnownFolderTracking) return false;
+            if (this.DisableKnownFolderAlias != other.DisableKnownFolderAlias) return false;
+            if (this.AllowLinkToLink != other.AllowLinkToLink) return false;
+            if (this.UnaliasOnSave != other.UnaliasOnSave) return false;
+            if (this.PreferEnvironmentPath != other.PreferEnvironmentPath) return false;
+            if (this.KeepLocalIDListForUNCTarget != other.KeepLocalIDListForUNCTarget) return false;
+            return true;
+        }
+
         public static LinkFlags FromBinary(byte[] bytes)
         {
             return new LinkFlags(bytes);
