@@ -14,7 +14,7 @@ namespace WindowsShortcutParser.Test
         [Fact]
         public void TestLocalDir()
         {
-            using var reader = new BinaryReader4Test(@"Resources\LocalDir.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources","LocalDir.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -106,12 +106,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\LocalDir.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "LocalDir.json"));
         }
         [Fact]
         public void TestLocalDirUnicode()
         {
-            using var reader = new BinaryReader4Test(@"Resources\LocalDirUnicode.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources","LocalDirUnicode.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -203,12 +203,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\LocalDirUnicode.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "LocalDirUnicode.json"));
         }
         [Fact]
         public void TestLocalFile()
         {
-            using var reader = new BinaryReader4Test(@"Resources\LocalFile.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources","LocalFile.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -300,12 +300,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\LocalFile.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "LocalFile.json"));
         }
         [Fact]
         public void TestLocalFileUnicode()
         {
-            using var reader = new BinaryReader4Test(@"Resources\LocalFileUnicode.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "LocalFileUnicode.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -397,12 +397,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\LocalFileUnicode.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "LocalFileUnicode.json"));
         }
         [Fact]
         public void TestRemoteDir()
         {
-            using var reader = new BinaryReader4Test(@"Resources\RemoteDir.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "RemoteDir.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -498,12 +498,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\RemoteDir.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "RemoteDir.json"));
         }
         [Fact]
         public void TestRemoteDirUnicode()
         {
-            using var reader = new BinaryReader4Test(@"Resources\RemoteDirUnicode.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "RemoteDirUnicode.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -599,12 +599,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\RemoteDirUnicode.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "RemoteDirUnicode.json"));
         }
         [Fact]
         public void TestRemoteFile()
         {
-            using var reader = new BinaryReader4Test(@"Resources\RemoteFile.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "RemoteFile.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -700,12 +700,12 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\RemoteFile.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "RemoteFile.json"));
         }
         [Fact]
         public void TestRemoteFileUnicode()
         {
-            using var reader = new BinaryReader4Test(@"Resources\RemoteFileUnicode.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "RemoteFileUnicode.lnk"));
             WindowsShellLinkEntity result = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             var slh = result.ShellLinkHeader;
             slh.HeaderSize.Is(76);
@@ -801,18 +801,18 @@ namespace WindowsShortcutParser.Test
             result.StringData.COMMAND_LINE_ARGUMENTS.Is(null);
             result.StringData.ICON_LOCATION.Is(null);
 
-            AssertEqualByJson(result, @"Resources\RemoteFileUnicode.json");
+            AssertEqualByJson(result, Path.Combine("Resources", "RemoteFileUnicode.json"));
         }
         [Fact]
         public void TestSerialize()
         {
-            using var reader = new BinaryReader4Test(@"Resources\LocalFile.lnk");
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "LocalFile.lnk"));
             var obj2 = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             using var ms = new MemoryStream();
             new LnkBinarySerializer().Serialize(ms, obj2);
 
             var actual = ms.ToArray();
-            var expected = File.ReadAllBytes(@"Resources\LocalFile.lnk");
+            var expected = File.ReadAllBytes(Path.Combine("Resources", "LocalFile.lnk"));
             var expected2 = expected.Take(actual.Length).ToArray();
             actual.Reverse().Is(expected2.Reverse());
             actual.Is(expected);
@@ -820,8 +820,8 @@ namespace WindowsShortcutParser.Test
         [Fact]
         public void TestDeserialize()
         {
-            var obj1 = WindowsShortcutParser.Parser.WindowsShortcutParser.FromJsonFile(@"Resources\LocalFile.json");
-            using var reader = new BinaryReader4Test(@"Resources\LocalFile.lnk");
+            var obj1 = WindowsShortcutParser.Parser.WindowsShortcutParser.FromJsonFile(Path.Combine("Resources", "LocalFile.json"));
+            using var reader = new BinaryReader4Test(Path.Combine("Resources", "LocalFile.lnk"));
             var obj2 = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
             obj1.ShellLinkHeader.HeaderSize.Is(obj2.ShellLinkHeader.HeaderSize);
             obj1.ShellLinkHeader.LinkCLSID.Is(obj2.ShellLinkHeader.LinkCLSID);
