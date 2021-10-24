@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using WindowsShortcutParser.Entity;
 using WindowsShortcutParser.Parser;
@@ -460,9 +461,7 @@ namespace WindowsShortcutParser.Test
             slh.Reserved2.Length.Is(4);
             slh.Reserved3.Length.Is(4);
 
-            var ltil = result.LinkTargetIDList;
-            ((int)ltil.IDListSize).Is(0);
-            ltil.IDList.Count.Is(0);
+            result.LinkTargetIDList.IsNull();
 
             var li = result.LinkInfo;
             li.LinkInfoSize.Is(84u);
@@ -482,7 +481,7 @@ namespace WindowsShortcutParser.Test
             li.CommonNetworkRelativeLink.CommonNetworkRelativeLinkFlags.ValidNetType.Is(true);
             li.CommonNetworkRelativeLink.NetNameOffset.Is(20u);
             li.CommonNetworkRelativeLink.DeviceNameOffset.Is(0u);
-            li.CommonNetworkRelativeLink.NetworkProviderType.Is(NetworkProviderType.NONE);
+            li.CommonNetworkRelativeLink.NetworkProviderType.Value.Is(131072u);
             li.CommonNetworkRelativeLink.NetNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.DeviceNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.NetName.Is(@"\\192.168.10.101\SHARE");
@@ -563,9 +562,7 @@ namespace WindowsShortcutParser.Test
             slh.Reserved2.Length.Is(4);
             slh.Reserved3.Length.Is(4);
 
-            var ltil = result.LinkTargetIDList;
-            ((int)ltil.IDListSize).Is(0);
-            ltil.IDList.Count.Is(0);
+            result.LinkTargetIDList.IsNull();
 
             var li = result.LinkInfo;
             li.LinkInfoSize.Is(100u);
@@ -585,7 +582,7 @@ namespace WindowsShortcutParser.Test
             li.CommonNetworkRelativeLink.CommonNetworkRelativeLinkFlags.ValidNetType.Is(true);
             li.CommonNetworkRelativeLink.NetNameOffset.Is(20u);
             li.CommonNetworkRelativeLink.DeviceNameOffset.Is(0u);
-            li.CommonNetworkRelativeLink.NetworkProviderType.Is(NetworkProviderType.NONE);
+            li.CommonNetworkRelativeLink.NetworkProviderType.Value.Is(131072u);
             li.CommonNetworkRelativeLink.NetNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.DeviceNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.NetName.Is(@"\\192.168.10.101\SHARE");
@@ -666,9 +663,7 @@ namespace WindowsShortcutParser.Test
             slh.Reserved2.Length.Is(4);
             slh.Reserved3.Length.Is(4);
 
-            var ltil = result.LinkTargetIDList;
-            ((int)ltil.IDListSize).Is(0);
-            ltil.IDList.Count.Is(0);
+            result.LinkTargetIDList.IsNull();
 
             var li = result.LinkInfo;
             li.LinkInfoSize.Is(79u);
@@ -688,7 +683,7 @@ namespace WindowsShortcutParser.Test
             li.CommonNetworkRelativeLink.CommonNetworkRelativeLinkFlags.ValidNetType.Is(true);
             li.CommonNetworkRelativeLink.NetNameOffset.Is(20u);
             li.CommonNetworkRelativeLink.DeviceNameOffset.Is(0u);
-            li.CommonNetworkRelativeLink.NetworkProviderType.Is(NetworkProviderType.NONE);
+            li.CommonNetworkRelativeLink.NetworkProviderType.Value.Is(131072u);
             li.CommonNetworkRelativeLink.NetNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.DeviceNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.NetName.Is(@"\\192.168.10.101\SHARE");
@@ -769,9 +764,7 @@ namespace WindowsShortcutParser.Test
             slh.Reserved2.Length.Is(4);
             slh.Reserved3.Length.Is(4);
 
-            var ltil = result.LinkTargetIDList;
-            ((int)ltil.IDListSize).Is(0);
-            ltil.IDList.Count.Is(0);
+            result.LinkTargetIDList.IsNull();
 
             var li = result.LinkInfo;
             li.LinkInfoSize.Is(118u);
@@ -791,7 +784,7 @@ namespace WindowsShortcutParser.Test
             li.CommonNetworkRelativeLink.CommonNetworkRelativeLinkFlags.ValidNetType.Is(true);
             li.CommonNetworkRelativeLink.NetNameOffset.Is(20u);
             li.CommonNetworkRelativeLink.DeviceNameOffset.Is(0u);
-            li.CommonNetworkRelativeLink.NetworkProviderType.Is(NetworkProviderType.NONE);
+            li.CommonNetworkRelativeLink.NetworkProviderType.Value.Is(131072u);
             li.CommonNetworkRelativeLink.NetNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.DeviceNameOffsetUnicode.Is(0u);
             li.CommonNetworkRelativeLink.NetName.Is(@"\\192.168.10.101\SHARE");
@@ -809,6 +802,72 @@ namespace WindowsShortcutParser.Test
             result.StringData.ICON_LOCATION.Is(null);
 
             AssertEqualByJson(result, @"Resources\RemoteFileUnicode.json");
+        }
+        [Fact]
+        public void TestSerialize()
+        {
+            using var reader = new BinaryReader4Test(@"Resources\LocalFile.lnk");
+            var obj2 = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
+            using var ms = new MemoryStream();
+            new LnkBinarySerializer().Serialize(ms, obj2);
+
+            var actual = ms.ToArray();
+            var expected = File.ReadAllBytes(@"Resources\LocalFile.lnk");
+            var expected2 = expected.Take(actual.Length).ToArray();
+            actual.Reverse().Is(expected2.Reverse());
+            actual.Is(expected);
+        }
+        [Fact]
+        public void TestDeserialize()
+        {
+            var obj1 = WindowsShortcutParser.Parser.WindowsShortcutParser.FromJsonFile(@"Resources\LocalFile.json");
+            using var reader = new BinaryReader4Test(@"Resources\LocalFile.lnk");
+            var obj2 = WindowsShortcutParser.Parser.WindowsShortcutParser.Parse(reader);
+            obj1.ShellLinkHeader.HeaderSize.Is(obj2.ShellLinkHeader.HeaderSize);
+            obj1.ShellLinkHeader.LinkCLSID.Is(obj2.ShellLinkHeader.LinkCLSID);
+            obj1.ShellLinkHeader.LinkFlags.HasLinkTargetIDList.Is(obj2.ShellLinkHeader.LinkFlags.HasLinkTargetIDList);
+            obj1.ShellLinkHeader.LinkFlags.HasLinkInfo.Is(obj2.ShellLinkHeader.LinkFlags.HasLinkInfo);
+            obj1.ShellLinkHeader.LinkFlags.HasName.Is(obj2.ShellLinkHeader.LinkFlags.HasName);
+            obj1.ShellLinkHeader.LinkFlags.HasRelativePath.Is(obj2.ShellLinkHeader.LinkFlags.HasRelativePath);
+            obj1.ShellLinkHeader.LinkFlags.HasWorkingDir.Is(obj2.ShellLinkHeader.LinkFlags.HasWorkingDir);
+            obj1.ShellLinkHeader.LinkFlags.HasArguments.Is(obj2.ShellLinkHeader.LinkFlags.HasArguments);
+            obj1.ShellLinkHeader.LinkFlags.HasIconLocation.Is(obj2.ShellLinkHeader.LinkFlags.HasIconLocation);
+            obj1.ShellLinkHeader.LinkFlags.IsUnicode.Is(obj2.ShellLinkHeader.LinkFlags.IsUnicode);
+            obj1.ShellLinkHeader.LinkFlags.ForceNoLinkInfo.Is(obj2.ShellLinkHeader.LinkFlags.ForceNoLinkInfo);
+            obj1.ShellLinkHeader.LinkFlags.HasExpString.Is(obj2.ShellLinkHeader.LinkFlags.HasExpString);
+            obj1.ShellLinkHeader.LinkFlags.RunInSeparateProcess.Is(obj2.ShellLinkHeader.LinkFlags.RunInSeparateProcess);
+            obj1.ShellLinkHeader.LinkFlags.Unused1.Is(obj2.ShellLinkHeader.LinkFlags.Unused1);
+            obj1.ShellLinkHeader.LinkFlags.HasDarwinID.Is(obj2.ShellLinkHeader.LinkFlags.HasDarwinID);
+            obj1.ShellLinkHeader.LinkFlags.RunAsUser.Is(obj2.ShellLinkHeader.LinkFlags.RunAsUser);
+            obj1.ShellLinkHeader.LinkFlags.HasExpIcon.Is(obj2.ShellLinkHeader.LinkFlags.HasExpIcon);
+            obj1.ShellLinkHeader.LinkFlags.NoPidlAlias.Is(obj2.ShellLinkHeader.LinkFlags.NoPidlAlias);
+            obj1.ShellLinkHeader.LinkFlags.Unused2.Is(obj2.ShellLinkHeader.LinkFlags.Unused2);
+            obj1.ShellLinkHeader.LinkFlags.RunWithShimLayer.Is(obj2.ShellLinkHeader.LinkFlags.RunWithShimLayer);
+            obj1.ShellLinkHeader.LinkFlags.ForceNoLinkTrack.Is(obj2.ShellLinkHeader.LinkFlags.ForceNoLinkTrack);
+            obj1.ShellLinkHeader.LinkFlags.EnableTargetMetadata.Is(obj2.ShellLinkHeader.LinkFlags.EnableTargetMetadata);
+            obj1.ShellLinkHeader.LinkFlags.DisableLinkPathTracking.Is(obj2.ShellLinkHeader.LinkFlags.DisableLinkPathTracking);
+            obj1.ShellLinkHeader.LinkFlags.DisableKnownFolderTracking.Is(obj2.ShellLinkHeader.LinkFlags.DisableKnownFolderTracking);
+            obj1.ShellLinkHeader.LinkFlags.DisableKnownFolderAlias.Is(obj2.ShellLinkHeader.LinkFlags.DisableKnownFolderAlias);
+            obj1.ShellLinkHeader.LinkFlags.AllowLinkToLink.Is(obj2.ShellLinkHeader.LinkFlags.AllowLinkToLink);
+            obj1.ShellLinkHeader.LinkFlags.UnaliasOnSave.Is(obj2.ShellLinkHeader.LinkFlags.UnaliasOnSave);
+            obj1.ShellLinkHeader.LinkFlags.PreferEnvironmentPath.Is(obj2.ShellLinkHeader.LinkFlags.PreferEnvironmentPath);
+            obj1.ShellLinkHeader.LinkFlags.KeepLocalIDListForUNCTarget.Is(obj2.ShellLinkHeader.LinkFlags.KeepLocalIDListForUNCTarget);
+            obj1.ShellLinkHeader.LinkFlags.Is(obj2.ShellLinkHeader.LinkFlags);
+            obj1.ShellLinkHeader.FileAttributes.Is(obj2.ShellLinkHeader.FileAttributes);
+            obj1.ShellLinkHeader.CreationTime.Is(obj2.ShellLinkHeader.CreationTime);
+            obj1.ShellLinkHeader.AccessTime.Is(obj2.ShellLinkHeader.AccessTime);
+            obj1.ShellLinkHeader.WriteTime.Is(obj2.ShellLinkHeader.WriteTime);
+            obj1.ShellLinkHeader.FileSize.Is(obj2.ShellLinkHeader.FileSize);
+            obj1.ShellLinkHeader.IconIndex.Is(obj2.ShellLinkHeader.IconIndex);
+            obj1.ShellLinkHeader.ShowCommand.Is(obj2.ShellLinkHeader.ShowCommand);
+            obj1.ShellLinkHeader.HotKey.Is(obj2.ShellLinkHeader.HotKey);
+            obj1.ShellLinkHeader.Reserved1.Is(obj2.ShellLinkHeader.Reserved1);
+            obj1.ShellLinkHeader.Reserved2.Is(obj2.ShellLinkHeader.Reserved2);
+            obj1.ShellLinkHeader.Reserved3.Is(obj2.ShellLinkHeader.Reserved3);
+            obj1.ShellLinkHeader.Is(obj2.ShellLinkHeader);
+            obj1.LinkTargetIDList.Is(obj2.LinkTargetIDList);
+            obj1.LinkInfo.Is(obj2.LinkInfo);
+            obj1.StringData.Is(obj2.StringData);
         }
         private static void AssertEqualByJson(WindowsShellLinkEntity entity, string expectedFilepath)
         {
