@@ -4,11 +4,12 @@ windows shortcut file(.lnk) utility
 
 # how to use
 
-git clone
+1. git clone
+1. dotnet build
+1. winlnk sample.lnk
 
-dotnet build
-
-winlnk sample.lnk
+```shell
+$ winlnk sample.lnk
 {
   "ShellLinkHeader": {
     "HeaderSize": 76,
@@ -16,5 +17,6 @@ winlnk sample.lnk
     "LinkFlags": {
       "HasLinkTargetIDList": true,
 ...
+```
 
 winlnk --load sample.json -o sample.lnk
