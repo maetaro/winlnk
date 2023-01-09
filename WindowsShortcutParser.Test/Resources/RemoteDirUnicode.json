@@ -48,9 +48,9 @@
       "FILE_ATTRIBUTE_NOT_CONTENT_INDEXED": false,
       "FILE_ATTRIBUTE_ENCRYPTED": false
     },
-    "CreationTime": "2021-09-18T11:17:49.7274659+09:00",
-    "AccessTime": "2021-09-18T11:32:01.3248914+09:00",
-    "WriteTime": "2021-09-18T11:32:01.1609195+09:00",
+    "CreationTime": "2021-09-18T02:17:49.7274659+00:00",
+    "AccessTime": "2021-09-18T02:32:01.3248914+00:00",
+    "WriteTime": "2021-09-18T02:32:01.1609195+00:00",
     "FileSize": 0,
     "IconIndex": 0,
     "ShowCommand": 1,
