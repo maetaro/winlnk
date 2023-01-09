@@ -550,9 +550,9 @@ namespace WindowsShortcutParser.Test
             slh.FileAttributes.FILE_ATTRIBUTE_OFFLINE.Is(false);
             slh.FileAttributes.FILE_ATTRIBUTE_NOT_CONTENT_INDEXED.Is(false);
             slh.FileAttributes.FILE_ATTRIBUTE_ENCRYPTED.Is(false);
-            slh.CreationTime.Is(DateTime.Parse("2021-09-18T11:17:49.7274659+09:00"));
-            slh.AccessTime.Is(DateTime.Parse("2021-09-18T11:32:01.3248914+09:00"));
-            slh.WriteTime.Is(DateTime.Parse("2021-09-18T11:32:01.1609195+09:00"));
+            slh.CreationTime.Is(DateTime.Parse("2021-09-18T02:17:49.7274659+00:00"));
+            slh.AccessTime.Is(DateTime.Parse("2021-09-18T02:32:01.3248914+00:00"));
+            slh.WriteTime.Is(DateTime.Parse("2021-09-18T02:32:01.1609195+00:00"));
             slh.FileSize.Is(0u);
             slh.IconIndex.Is(0);
             slh.ShowCommand.Is(1u);
