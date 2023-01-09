@@ -53,6 +53,7 @@ jobs:
           git config --local user.email "${GITHUB_EMAIL}"
           git remote set-url origin git@github.com:maetaro/maetaro.github.io.git
           git config remote.origin.url "git@github.com:maetaro/maetaro.github.io.git"
+          find .
           git add winlnk
           git commit -m "auto rebuilding site by maetaro/winlnk"
           git push origin master
