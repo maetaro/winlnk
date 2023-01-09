@@ -1,0 +1,58 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Checkout maetaro/maetaro.github.io
+      uses: actions/checkout@v3
+      with:
+        repository: "maetaro/maetaro.github.io"
+        ref: "master"
+        path: "maetaro.github.io"
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Setup reportgenerator
+      run: dotnet tool install -g dotnet-reportgenerator-globaltool
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+    - name: Create coverage report
+      run: reportgenerator -reports:"$(find WindowsShortcutParser.Test/TestResults/**/coverage.cobertura.xml)" -targetdir:"coveragereport" -reporttypes:Html
+    - name: Deploy Configuration
+      run: |
+          mkdir ~/.ssh
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+          echo "${{ secrets.MY_ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 400 ~/.ssh/id_ed25519
+    - name: Push
+      env:
+        GITHUB_USER: "builduser"
+        GITHUB_EMAIL: "test-builduser@sample.com"
+        GITHUB_REPOSITORY: "maetaro/maetaro.github.io"
+      run: |
+          cd maetaro.github.io
+          git config --local user.name "${GITHUB_USER}"
+          git config --local user.email "${GITHUB_EMAIL}"
+          git remote set-url origin git@github.com:maetaro/maetaro.github.io.git
+          git config remote.origin.url "git@github.com:maetaro/maetaro.github.io.git"
+          git add winlnk
+          git commit -m "auto rebuilding site by maetaro/winlnk"
+          git push origin master
