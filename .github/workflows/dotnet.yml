@@ -29,7 +29,7 @@ jobs:
     - name: Setup reportgenerator
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
     - name: Setup doxygen
-      run: apt install -y doxygen
+      run: sudo apt-get install -y doxygen
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
