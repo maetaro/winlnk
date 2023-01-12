@@ -1,7 +1,6 @@
 # winlnk
 windows shortcut file(.lnk) utility
 
-
 # how to use
 
 1. git clone
@@ -20,3 +19,7 @@ $ winlnk sample.lnk
 ```
 
 winlnk --load sample.json -o sample.lnk
+
+# TEST Coverage Report.
+
+https://maetaro.github.io/winlnk/cov/
