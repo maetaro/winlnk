@@ -37,7 +37,6 @@ jobs:
     - name: Copy test report
       run: |
           mkdir -p maetaro.github.io/winlnk/testResults
-          rm -rf maetaro.github.io/winlnk/testResults
           cp -rf WindowsShortcutParser.Test/TestResults/testResults.html maetaro.github.io/winlnk/testResults/.
           mv maetaro.github.io/winlnk/testResults/testResults.html maetaro.github.io/winlnk/testResults/index.html
     - name: Create coverage report
