@@ -38,7 +38,7 @@ jobs:
       run: |
           mkdir -p maetaro.github.io/winlnk/testResults
           rm -rf maetaro.github.io/winlnk/testResults
-          cp -rf testResults.html maetaro.github.io/winlnk/testResults/index.html
+          cp -rf WindowsShortcutParser.Test/TestResults/testResults.html maetaro.github.io/winlnk/testResults/index.html
     - name: Create coverage report
       run: |
           reportgenerator -reports:"$(find WindowsShortcutParser.Test/TestResults/**/coverage.cobertura.xml)" -targetdir:"coveragereport" -reporttypes:Html
