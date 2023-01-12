@@ -20,6 +20,11 @@ $ winlnk sample.lnk
 
 winlnk --load sample.json -o sample.lnk
 
+# TEST Results Report.
+
+https://maetaro.github.io/winlnk/testResults/
+
 # TEST Coverage Report.
 
 https://maetaro.github.io/winlnk/cov/
+
