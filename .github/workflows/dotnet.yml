@@ -33,7 +33,12 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger "html;logfilename=testResults.html"
+    - name: Copy test report
+      run: |
+          mkdir -p maetaro.github.io/winlnk/testResults
+          rm -rf maetaro.github.io/winlnk/testResults
+          cp -rf testResults.html maetaro.github.io/winlnk/testResults/index.html
     - name: Create coverage report
       run: |
           reportgenerator -reports:"$(find WindowsShortcutParser.Test/TestResults/**/coverage.cobertura.xml)" -targetdir:"coveragereport" -reporttypes:Html
@@ -57,7 +62,6 @@ jobs:
           git config --local user.email "${GITHUB_EMAIL}"
           git remote set-url origin git@github.com:maetaro/maetaro.github.io.git
           git config remote.origin.url "git@github.com:maetaro/maetaro.github.io.git"
-          find .
           git add winlnk
           git commit -m "auto rebuilding site by maetaro/winlnk"
           git push origin master
