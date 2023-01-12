@@ -85,9 +85,9 @@ namespace WindowsShortcutParser.Parser
             entity.ShellLinkHeader.FileAttributes.FILE_ATTRIBUTE_NOT_CONTENT_INDEXED= fa.GetProperty("FILE_ATTRIBUTE_NOT_CONTENT_INDEXED").GetBoolean();
             entity.ShellLinkHeader.FileAttributes.FILE_ATTRIBUTE_ENCRYPTED          = fa.GetProperty("FILE_ATTRIBUTE_ENCRYPTED").GetBoolean();
 
-            entity.ShellLinkHeader.CreationTime = ShellLinkHeader.GetProperty("CreationTime").GetDateTime();
-            entity.ShellLinkHeader.AccessTime = ShellLinkHeader.GetProperty("AccessTime").GetDateTime();
-            entity.ShellLinkHeader.WriteTime = ShellLinkHeader.GetProperty("WriteTime").GetDateTime();
+            entity.ShellLinkHeader.CreationTime = ShellLinkHeader.GetProperty("CreationTime").GetInt64();
+            entity.ShellLinkHeader.AccessTime = ShellLinkHeader.GetProperty("AccessTime").GetInt64();
+            entity.ShellLinkHeader.WriteTime = ShellLinkHeader.GetProperty("WriteTime").GetInt64();
             entity.ShellLinkHeader.FileSize = ShellLinkHeader.GetProperty("FileSize").GetUInt32();
             entity.ShellLinkHeader.IconIndex = ShellLinkHeader.GetProperty("IconIndex").GetInt32();
             entity.ShellLinkHeader.ShowCommand = ShellLinkHeader.GetProperty("ShowCommand").GetUInt32();

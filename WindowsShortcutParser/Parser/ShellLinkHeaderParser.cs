@@ -14,9 +14,9 @@ namespace WindowsShortcutParser.Parser
             entity.LinkCLSID = new Guid(reader.ReadBytes(16));
             entity.LinkFlags = LinkFlags.FromBinary(reader.ReadBytes(4));
             entity.FileAttributes = FileAttributes.FromBinary(reader.ReadBytes(4));
-            entity.CreationTime = DateTime.FromFileTime(reader.ReadInt64());
-            entity.AccessTime = DateTime.FromFileTime(reader.ReadInt64());
-            entity.WriteTime = DateTime.FromFileTime(reader.ReadInt64());
+            entity.CreationTime = reader.ReadInt64();
+            entity.AccessTime = reader.ReadInt64();
+            entity.WriteTime = reader.ReadInt64();
             entity.FileSize = reader.ReadUInt32();
             entity.IconIndex = reader.ReadInt32();
             entity.ShowCommand = reader.ReadUInt32();
@@ -33,9 +33,9 @@ namespace WindowsShortcutParser.Parser
             stream.Write(entity.LinkCLSID.ToByteArray(), 0, 16);
             stream.Write(entity.LinkFlags.ToByteArray(), 0, 4);
             stream.Write(entity.FileAttributes.ToByteArray(), 0, 4);
-            stream.Write(BitConverter.GetBytes(entity.CreationTime.ToFileTime()), 0, 8);
-            stream.Write(BitConverter.GetBytes(entity.AccessTime.ToFileTime()), 0, 8);
-            stream.Write(BitConverter.GetBytes(entity.WriteTime.ToFileTime()), 0, 8);
+            stream.Write(BitConverter.GetBytes(entity.CreationTime), 0, 8);
+            stream.Write(BitConverter.GetBytes(entity.AccessTime), 0, 8);
+            stream.Write(BitConverter.GetBytes(entity.WriteTime), 0, 8);
             stream.Write(BitConverter.GetBytes(entity.FileSize), 0, 4);
             stream.Write(BitConverter.GetBytes(entity.IconIndex), 0, 4);
             stream.Write(BitConverter.GetBytes(entity.ShowCommand), 0, 4);

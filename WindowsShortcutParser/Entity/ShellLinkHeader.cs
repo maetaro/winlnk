@@ -15,11 +15,11 @@ namespace WindowsShortcutParser.Entity
         public LinkFlags LinkFlags { get; set; }
         public FileAttributes FileAttributes { get; set; }
 
-        public DateTime CreationTime { get; set; }
+        public long CreationTime { get; set; }
 
-        public DateTime AccessTime { get; set; }
+        public long AccessTime { get; set; }
 
-        public DateTime WriteTime { get; set; }
+        public long WriteTime { get; set; }
 
         public uint FileSize { get; set; }
 
