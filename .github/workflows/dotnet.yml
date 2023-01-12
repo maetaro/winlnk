@@ -28,6 +28,8 @@ jobs:
         dotnet-version: 6.0.x
     - name: Setup reportgenerator
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
+    - name: Setup doxygen
+      run: apt install -y doxygen
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -45,6 +47,14 @@ jobs:
           mkdir -p maetaro.github.io/winlnk/cov
           rm -rf maetaro.github.io/winlnk/cov
           cp -rf coveragereport maetaro.github.io/winlnk/cov
+    - name: Create docs
+      run: |
+          cd docs
+          doxygen
+          mkdir -p maetaro.github.io/winlnk/docs
+          rm -rf maetaro.github.io/winlnk/docs
+          cp -rf html maetaro.github.io/winlnk/docs
+          cd ..
     - name: Deploy Configuration
       run: |
           mkdir ~/.ssh
