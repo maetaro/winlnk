@@ -51,10 +51,10 @@ jobs:
       run: |
           cd docs
           doxygen
+          cd ..
           mkdir -p maetaro.github.io/winlnk/docs
           rm -rf maetaro.github.io/winlnk/docs
           cp -rf html maetaro.github.io/winlnk/docs
-          cd ..
     - name: Deploy Configuration
       run: |
           mkdir ~/.ssh
