@@ -54,7 +54,7 @@ jobs:
           cd ..
           mkdir -p maetaro.github.io/winlnk/docs
           rm -rf maetaro.github.io/winlnk/docs
-          cp -rf html maetaro.github.io/winlnk/docs
+          cp -rf docs/html maetaro.github.io/winlnk/docs
     - name: Deploy Configuration
       run: |
           mkdir ~/.ssh
